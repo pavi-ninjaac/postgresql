@@ -1,0 +1,94 @@
+set search_path to student;
+
+CREATE TABLE student_details (name TEXT,id char(2),department varchar(50) );
+ALTER TABLE student_details ADD city varchar(40);
+ALTER TABLE student_details RENAME TO student;
+
+ALTER TABLE student rename column id to stu_id;
+ALTER TABLE student add column address varchar (50);
+drop schema puplic;
+truncate schema puplic;
+truncate table stt;
+drop table cnsdj;
+
+--dml commands
+INSERT INTO student
+values('pavi',56,'cse','chennai','12.56.7 o;d west street madurai');
+INSERT INTO student
+values('mano',57,'cse','selam','12.56.7 o;d ');
+INSERT INTO student
+values('sri',58,'eee','madurai','west street madurai');
+INSERT INTO student
+values('kanni',59,'ece','kanniyakumari',' madurai');
+INSERT INTO student
+values('vellu',60,'cse','vellure','et madurai');
+INSERT INTO student
+values('kattappa',61,'it','chennai','12.est street madurai');
+INSERT INTO student
+values('ac',63,'cse','chennai','12.56.7 o;d west street madurai');
+INSERT INTO student
+values('pavi',56,'cse','chennai','12.56.7 o;d west street madurai');
+select * from student;
+
+UPDATE student set stu_id= '67'
+where name='pavi';
+
+select * from student;
+
+
+--select and their thinks
+--aggricate functions
+--to use sun i need integer column i dont have sch columns so i add that by
+
+
+ALTER TABLE student alter column stu_id type integer;
+select sum(stu_id::integer),min(name),max(city) from student;
+--no of tables in the database
+
+select count(*);
+--no of tuples in a specified column
+
+select count(stu_id) from student;
+
+--special ckmmands 
+--special all are using with where that is used to select some tnings
+
+select * from student where city like '*****';
+select * from student where city like '%schen%s';
+
+select name from student where stu_id::integer in (56,57,58);
+select name from student where stu_id::integer not in (56,57,58);
+
+select name from student where stu_id::integer between 56 and 60;
+
+
+
+select * from student limit 5;
+
+select * from student offset 3 first 3 rows only;
+
+select * from student offset 3 limit 4;
+
+
+--create databae
+CREATE DATABASE "flask-bick"
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'English_India.1252'
+    LC_CTYPE = 'English_India.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+
+
+
+
+
+
+
+
+
+
+
+
